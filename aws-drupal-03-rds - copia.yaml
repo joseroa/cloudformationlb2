@@ -100,16 +100,13 @@ Resources:
   DatabaseCluster:
     Type: AWS::RDS::DBCluster
     Properties:
-      Engine: aurora-mysql
-      EngineVersion: '5.7'
       BackupRetentionPeriod:  7
       DatabaseName: !Ref DatabaseName
       DBSubnetGroupName: !Ref DataSubnetGroup
+      Engine: aurora
       MasterUsername: !Ref DatabaseMasterUsername
       MasterUserPassword: !Ref DatabaseMasterPassword
       Port: 3306
-      StorageEncrypted: true
-      KmsKeyId: alias/aws/rds
       Tags:
         - Key: Name
           Value: !Join [ '', [ 'Drupal / ', !Ref 'AWS::StackName' ] ]
@@ -124,8 +121,7 @@ Resources:
       DBClusterIdentifier: !Ref DatabaseCluster
       DBInstanceClass: !Ref DatabaseInstanceType
       DBSubnetGroupName: !Ref DataSubnetGroup
-      Engine: aurora-mysql
-      EngineVersion: '5.7'
+      Engine: aurora
       Tags:
         - Key: Name
           Value: !Join [ '', [ 'Drupal / ', !Ref 'AWS::StackName' ] ]
@@ -138,8 +134,7 @@ Resources:
       DBClusterIdentifier: !Ref DatabaseCluster
       DBInstanceClass: !Ref DatabaseInstanceType
       DBSubnetGroupName: !Ref DataSubnetGroup
-      Engine: aurora-mysql
-      EngineVersion: '5.7'
+      Engine: aurora
       Tags:
         - Key: Name
           Value: !Join [ '', [ 'Drupal / ', !Ref 'AWS::StackName' ] ]
